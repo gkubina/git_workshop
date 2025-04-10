@@ -32,9 +32,11 @@ void display_game(const Game *game) {
 }
 
 void player_hit(Game *game) {
+    int res = 0;
     if (game->player_card_count < 10) {
         game->player_cards[game->player_card_count++] = draw_card(&game->deck);
-        // TODO: Après chaque tirage, vérifier si le score du joueur atteint ou dépasse 21
+        for (int i = 0; i < game->player_card_count; i++)
+            res += game->player_cards[i].value;
     } else {
         printf("Nombre maximum de cartes atteint pour le joueur.\n");
         // TODO: Gérer la situation de manière à ne pas dépasser la limite prévue par les règles de base
