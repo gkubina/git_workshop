@@ -35,6 +35,8 @@ void player_hit(Game *game) {
     int res = 0;
     if (game->player_card_count < 10) {
         game->player_cards[game->player_card_count++] = draw_card(&game->deck);
+        printf("You hit a ");
+        print_card(&game->player_cards[game->player_card_count - 1]);
         for (int i = 0; i < game->player_card_count; i++)
             res += game->player_cards[i].value;
         if (res > 21)
