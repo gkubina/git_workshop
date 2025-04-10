@@ -37,6 +37,11 @@ void player_hit(Game *game) {
         game->player_cards[game->player_card_count++] = draw_card(&game->deck);
         for (int i = 0; i < game->player_card_count; i++)
             res += game->player_cards[i].value;
+        if (res > 21)
+        {
+            printf("You have %d, you lost \n", res);
+            exit (0);
+        }
     } else {
         printf("Nombre maximum de cartes atteint pour le joueur.\n");
         // TODO: Gérer la situation de manière à ne pas dépasser la limite prévue par les règles de base
